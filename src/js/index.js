@@ -137,6 +137,14 @@ class Match {
   burstBlackJack(player) {
 
     player == this.croupier ? this.user.wins += 1 : this.croupier.wins += 1;
+    this.endGame();
+    
+  }
+  
+  blackJack(player) {
+    
+    player == this.user ? this.user.wins += 1 : this.croupier.wins += 1;
+    this.endGame();
 
   }
 
@@ -148,7 +156,7 @@ class Match {
 
     } else if (player.points === 21) {
 
-      this.endGame(player);
+      this.blackJack(player);
 
     } else {
 
@@ -158,17 +166,17 @@ class Match {
      
   }
 
-  check() {
-
-    this.checkBlackJack();
+  checkPlayerPoints() {
 
     if (this.user.points > this.croupier.points) {
 
-      this.endGame(this.user);
+      this.user.wins += 1;
+      this.endGame();
 
     } else if (this.user.points < this.croupier.points) {
 
-      this.endGame(this.croupier);
+      this.croupier.wins += 1;
+      this.endGame();
 
     }
 
@@ -180,19 +188,19 @@ class Match {
     this.user.hit(this.deck.cards, 2);
     this.croupier.hit(this.deck.cards, 2);
 
+    // Primeiro, confere se o User ganhou
+    this.checkBlackJack(this.user);
+
+    // Depois confere se o Croupier ganhou
+    this.checkBlackJack(this.user);
+
   }
 
-  endGame(player) {
-
-    player == this.user ? this.user.wins += 1 : this.croupier.wins += 1;
+  endGame() {
     
     this.user.hand = [];
     this.croupier.hand = [];
 
   }
 
-  // askFor() {
-    
-  // }
-  
 }
