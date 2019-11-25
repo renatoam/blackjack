@@ -18,6 +18,7 @@ class Deck {
     this.dropped = [];
     this.suits = ["ouro", "espada", "copas", "paus"];
     this.ranks = ["2","3","4","5","6","7","8","9","10","Q","J","K","A"]
+    
   }
 
   reset() {
@@ -193,8 +194,4 @@ class Match {
   // askFor() {
     
   // }
-
 }
-
-
-// Tadeo de Lisboa Salaviaw
