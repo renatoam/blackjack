@@ -63,13 +63,17 @@ class Player {
 
   }
 
-  hit(arr, times = 1) {
+  hit(arr, times = 1, hidden = false) {
 
     let idx = Math.floor(Math.random() * 53);
 
     for (let i = 0; i < times; i++) {
       this.hand.push(arr[idx]);
       arr.splice(idx, 1);
+    }
+
+    if (this.__proto__.constructor.name == "Croupier") {
+      // fazer alguma coisa pra deixar a carta do croupier virada pra baixo
     }
 
   }
@@ -84,21 +88,9 @@ class Player {
 
 }
 
-class Croupier extends Player {
+class Croupier extends Player {}
 
-  // hitHidden() {
-
-  // }
-
-}
-
-class User extends Player {
-
-  // giveUp() {
-
-  // }
-
-}
+class User extends Player {}
 
 class Match {
 
