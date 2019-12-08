@@ -1,3 +1,19 @@
+class Intro {
+
+  constructor() {
+
+    this.match = new Match();
+
+  }
+
+  play() {
+
+    // funcionalidade que inicia "chama" o jogo
+
+  }
+
+}
+
 class Card {
 
  constructor(suit, rank) {
@@ -90,7 +106,46 @@ class Player {
 
 class Croupier extends Player {}
 
-class User extends Player {}
+class User extends Player {
+
+  constructor() {
+
+    this.balance = 500;
+    this.bet = {};
+
+  }
+
+  // Talvez separar a aposta em um componente genérico
+
+  deal() {
+
+    this.balance = this.bet.playing;
+
+  }
+
+  setBet(value) {
+
+    this.bet = {
+      playing: this.balance - value,
+      win: this.balance + (value * 2),
+      lose: this.balance - (value * 2)
+    }
+
+  }
+
+  winBet() {
+
+    this.balance = this.bet.win;
+
+  }
+
+  loseBet() {
+
+    this.balance = this.bet.lose;
+
+  }
+
+}
 
 class Match {
 
@@ -184,7 +239,7 @@ class Match {
     this.checkBlackJack(this.user);
 
     // Depois confere se o Croupier ganhou
-    this.checkBlackJack(this.user);
+    this.checkBlackJack(this.croupier);
 
   }
 
