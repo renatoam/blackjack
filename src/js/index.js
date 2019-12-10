@@ -94,14 +94,6 @@ class Player {
 
   }
 
-  // stand() {
-
-  // }
-
-  // setCardValue() {
-    
-  // }
-
 }
 
 class Croupier extends Player {}
@@ -115,17 +107,10 @@ class User extends Player {
 
   }
 
-  // Talvez separar a aposta em um componente genérico
-
-  deal() {
-
-    this.balance = this.bet.playing;
-
-  }
-
   setBet(value) {
 
     this.bet = {
+      value,
       playing: this.balance - value,
       win: this.balance + (value * 2),
       lose: this.balance - (value * 2)
@@ -145,6 +130,30 @@ class User extends Player {
 
   }
 
+  stand(foe, deck, callback) {
+
+    for (let i = 0; foe.points >= 17; i++) {
+
+      if (foe.points > 21) {
+
+        this.burstBlackJack(foe); // esse this é referente ao objeto que ira chamar essa função sem bind, no caso, Match
+
+      } else if (foe.points > this.points) {
+
+        this.checkPlayerPoints(); // esse this é referente ao objeto que ira chamar essa função sem bind, no caso, Match
+
+      } else {
+
+        foe.hit(deck);
+
+      }
+
+    }
+
+    callback(); // no caso, será a askForHitStand()
+
+  }
+
 }
 
 class Match {
@@ -154,6 +163,16 @@ class Match {
     this.deck = new Deck;
     this.user = new User;
     this.croupier = new Croupier;
+
+  }
+
+  // Talvez separar a aposta em um componente genérico
+
+  deal() {
+
+    this.user.balance = this.user.bet.playing;
+    document.getElementById('bet').innerText(this.user.bet.value);
+    this.newGame();
 
   }
 
@@ -181,6 +200,12 @@ class Match {
 
   }
 
+  askForHitStand() {
+
+    // Apresentar pro usuário as opções de Hit e Stand novamente, pra ele decidir se pega mais uma ou fica com o que tem.
+
+  }
+
   burstBlackJack(player) {
 
     player == this.croupier ? this.user.wins += 1 : this.croupier.wins += 1;
@@ -195,21 +220,25 @@ class Match {
 
   }
 
-  checkBlackJack(player) {
+  checkBlackJack(players) {
 
-    if (player.points > 21) {
+    players.forEach(p => {
 
-      this.burstBlackJack(player);
+      if (p.points > 21) {
 
-    } else if (player.points === 21) {
+        this.burstBlackJack(p);
+  
+      } else if (p.points === 21) {
+  
+        this.blackJack(p);
+  
+      } else {
+  
+        return;
+  
+      }
 
-      this.blackJack(player);
-
-    } else {
-
-      return;
-
-    }
+    });
      
   }
 
@@ -235,17 +264,15 @@ class Match {
     this.user.hit(this.deck.cards, 2);
     this.croupier.hit(this.deck.cards, 2);
 
-    // Primeiro, confere se o User ganhou
-    this.checkBlackJack(this.user);
-
-    // Depois confere se o Croupier ganhou
-    this.checkBlackJack(this.croupier);
+    // Primeiro, confere se o User ou Croupier fizeram 21
+    this.checkBlackJack([this.user, this.croupier]);
 
   }
 
   endGame() {
     
     this.user.hand = [];
+    this.user.bet = {};
     this.croupier.hand = [];
 
   }
