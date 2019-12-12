@@ -4,13 +4,17 @@
 
 O jogo é feito com javascript puro, tentando aplicar alguns conceitos de orientação à objetos e alguns conceitos de programação no geral.
 
+Conforme eu for fazendo, vou estudando alguns conceitos e aplicando no projeto, para posteriormente usar como exemplo em artigos. Por exemplo, irei tentar aplicar alguns design patterns. Eu sei que o ideal é fazer já com isso em mente desde o começo, mas acredito que refatorar o código vai ser muito benéfico.
+
 ### 1.0.0
 
 Na primeira versão, desenvolvi a lógica de uma forma mais direta, mas nas outras versões, irei fazendo um code review do meu próprio código, corrigindo erros e refinando algumas partes da aplicação.
 
-Além disso, conforme vou fazendo, vou estudando alguns conceitos e aplicando no projeto, para posteriormente usar como exemplo em artigos. Por exemplo, irei tentar aplicar alguns design patterns. Eu sei que o ideal é fazer já com isso em mente desde o começo, mas acredito que refatorar o código vai ser muito benéfico.
+Além disso, para a primeira versão, deixei somente a lógica; o ambiente de desenvolvimento e a parte visual ficarão para os próximos releases.
 
-E, por fim, para a primeira versão, deixei somente a lógica, o ambiente de desenvolvimento e a parte visual ficarão para os próximos releases.
+### 1.1.0
+
+Na segunda versão, eu componentizei o código da aplicação e configurei o ambiente de desenvolvimento com o Webpack. Como a ideia era apenas componentizar, ainda não defini a questão de models e controllers, que fazem mais sentido para esse paradigma.
 
 ## Objetivo do jogo
 
