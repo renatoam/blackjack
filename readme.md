@@ -12,6 +12,10 @@ Na primeira versão, desenvolvi a lógica de uma forma mais direta, mas nas outr
 
 Além disso, para a primeira versão, deixei somente a lógica; o ambiente de desenvolvimento e a parte visual ficarão para os próximos releases.
 
+### 1.1.0
+
+Na segunda versão, eu componentizei o código da aplicação e configurei o ambiente de desenvolvimento com o Webpack. Como a ideia era apenas componentizar, ainda não defini a questão de models e controllers, que fazem mais sentido para esse paradigma.
+
 ## Objetivo do jogo
 
 O objetivo do jogo é ganhar do croupier, superando-o em valor de pontos sem ultrapassar 21 ou vendo-o ultrapassar 21. Quem passa de 21 perde.  
