@@ -1,6 +1,18 @@
 # Blackjack
 
-## Objetivo
+## Desenvolvimento
+
+O jogo é feito com javascript puro, tentando aplicar alguns conceitos de orientação à objetos e alguns conceitos de programação no geral.
+
+### 1.0.0
+
+Na primeira versão, desenvolvi a lógica de uma forma mais direta, mas nas outras versões, irei fazendo um code review do meu próprio código, corrigindo erros e refinando algumas partes da aplicação.
+
+Além disso, conforme vou fazendo, vou estudando alguns conceitos e aplicando no projeto, para posteriormente usar como exemplo em artigos. Por exemplo, irei tentar aplicar alguns design patterns. Eu sei que o ideal é fazer já com isso em mente desde o começo, mas acredito que refatorar o código vai ser muito benéfico.
+
+E, por fim, para a primeira versão, deixei somente a lógica, o ambiente de desenvolvimento e a parte visual ficarão para os próximos releases.
+
+## Objetivo do jogo
 
 O objetivo do jogo é ganhar do croupier, superando-o em valor de pontos sem ultrapassar 21 ou vendo-o ultrapassar 21. Quem passa de 21 perde.  
 
