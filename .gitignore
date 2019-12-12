@@ -1,0 +1,7 @@
+# Diretórios
+node_modules/
+dist/
+
+#Arquivos
+package-lock.json
+old.js
